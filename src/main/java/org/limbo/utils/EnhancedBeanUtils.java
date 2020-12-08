@@ -84,7 +84,7 @@ public class EnhancedBeanUtils {
     private static class IgnoreNullBeanUtilsBean extends BeanUtilsBean {
         private final Log log = LogFactory.getLog(BeanUtils.class);
 
-        private static final ContextClassLoaderLocal<BeanUtilsBean> BEANS_BY_CLASSLOADER = new ContextClassLoaderLocal<>() {
+        private static final ContextClassLoaderLocal<BeanUtilsBean> BEANS_BY_CLASSLOADER = new ContextClassLoaderLocal<BeanUtilsBean>() {
             // Creates the default instance used when the context classloader is unavailable
             protected BeanUtilsBean initialValue() {
                 return new IgnoreNullBeanUtilsBean();
