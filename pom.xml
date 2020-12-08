@@ -74,6 +74,7 @@
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus</artifactId>
             <version>${mybatis.plus.verison}</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
