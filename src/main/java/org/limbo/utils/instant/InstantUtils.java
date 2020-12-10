@@ -18,6 +18,7 @@
 
 package org.limbo.utils.instant;
 
+import java.time.Clock;
 import java.time.Instant;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
@@ -41,8 +42,8 @@ public class InstantUtils {
     /**
      * DEFAULT_ZONE 通过环境变量“limbo.instant.zone”初始化，默认UTC+8东八区
      */
-    private static final ZoneId DEFAULT_ZONE;
-    private static final Map<String, DateTimeFormatter> FORMATTERS = new ConcurrentHashMap<>();
+    static final ZoneId DEFAULT_ZONE;
+    static final Map<String, DateTimeFormatter> FORMATTERS = new ConcurrentHashMap<>();
     static {
         String zoneId = System.getProperty("limbo.instant.zone", "UTC+8");
         DEFAULT_ZONE = ZoneId.of(zoneId);
@@ -52,10 +53,25 @@ public class InstantUtils {
         FORMATTERS.put(HMS, DateTimeFormatter.ofPattern(HMS).withZone(DEFAULT_ZONE));
     }
 
-    public static String format(Instant instant, String format) {
-        DateTimeFormatter formatter = FORMATTERS.computeIfAbsent(format,
-                _format -> DateTimeFormatter.ofPattern(_format).withZone(ZoneId.systemDefault()));
+    private static DateTimeFormatter getFormatter(String pattern, ZoneId zone) {
+        return FORMATTERS.computeIfAbsent(pattern, _pattern -> DateTimeFormatter.ofPattern(_pattern).withZone(zone));
+    }
+
+    private static DateTimeFormatter getFormatter(String pattern) {
+        return getFormatter(pattern, DEFAULT_ZONE);
+    }
+
+    public static String format(Instant instant, String pattern, ZoneId zone) {
+        DateTimeFormatter formatter = getFormatter(pattern);
         return formatter.format(instant);
+    }
+
+    public static String format(Instant instant, String pattern, String zone) {
+        return format(instant, pattern, ZoneId.of(zone));
+    }
+
+    public static String format(Instant instant, String pattern) {
+        return format(instant, pattern, DEFAULT_ZONE);
     }
 
     public static String formatYMDHMS(Instant instant) {
@@ -70,10 +86,17 @@ public class InstantUtils {
         return FORMATTERS.get(HMS).format(instant);
     }
 
-    public static Instant parse(String instant, String format) {
-        DateTimeFormatter formatter = FORMATTERS.computeIfAbsent(format,
-                _format -> DateTimeFormatter.ofPattern(_format).withZone(ZoneId.systemDefault()));
+    public static Instant parse(String instant, String pattern, ZoneId zone) {
+        DateTimeFormatter formatter = getFormatter(pattern, zone);
         return Instant.from(formatter.parse(instant));
+    }
+
+    public static Instant parse(String instant, String pattern, String zone) {
+        return parse(instant, pattern, ZoneId.of(zone));
+    }
+
+    public static Instant parse(String instant, String pattern) {
+        return parse(instant, pattern, DEFAULT_ZONE);
     }
 
     public static Instant parseYMDHMS(String instant) {
@@ -97,15 +120,16 @@ public class InstantUtils {
     }
 
     public static Instant startOfToday() {
-        return startOfDay(Instant.now());
+        return startOfDay(Instant.now(Clock.system(DEFAULT_ZONE)));
     }
 
     public static Instant endOfToday() {
-        return endOfDay(Instant.now());
+        return endOfDay(Instant.now(Clock.system(DEFAULT_ZONE)));
     }
 
 
     public static void main(String[] args) {
+        System.setProperty("limbo.instant.zone", "UTC+9");
         System.out.println(formatYMDHMS(Instant.now()));
         System.out.println(formatYMDHMS(startOfToday()));
         System.out.println(formatYMDHMS(endOfToday()));
