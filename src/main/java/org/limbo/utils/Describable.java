@@ -17,18 +17,22 @@
 
 package org.limbo.utils;
 
-import java.util.Objects;
-
 /**
- * 可描述枚举
+ * 可描述对象
  *
  * @author brozen
  * @date 2020/12/10
  */
-public interface DescribableEnum<T> extends Describable<T> {
+public interface Describable<T> {
 
-    default boolean is(T value) {
-        return Objects.equals(value, this.getValue());
-    }
+    /**
+     * 获取枚举值
+     */
+    T getValue();
+
+    /**
+     * 获取枚举描述
+     */
+    String getDesc();
 
 }
