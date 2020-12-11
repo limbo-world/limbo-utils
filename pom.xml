@@ -9,9 +9,11 @@
     <version>0.1-SNAPSHOT</version>
 
     <properties>
+        <spring.version>5.1.5.RELEASE</spring.version>
         <jackson.version>2.11.3</jackson.version>
         <jasypt.version>1.16</jasypt.version>
         <mybatis.plus.verison>3.3.1</mybatis.plus.verison>
+        <jdom.version>1.1</jdom.version>
     </properties>
 
     <dependencies>
@@ -52,6 +54,13 @@
             <version>1.7.25</version>
         </dependency>
 
+        <!-- Spring依赖，微信小程序API依赖ConversionService，考虑移除，使用自定义的 -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring.version}</version>
+            <scope>provided</scope>
+        </dependency>
 
         <!-- Jackson -->
         <dependency>
@@ -74,6 +83,14 @@
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus</artifactId>
             <version>${mybatis.plus.verison}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- JDOM xml解析，微信小程序API用 -->
+        <dependency>
+            <groupId>org.jdom</groupId>
+            <artifactId>jdom</artifactId>
+            <version>${jdom.version}</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
