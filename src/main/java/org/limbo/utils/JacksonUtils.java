@@ -21,6 +21,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import java.text.SimpleDateFormat;
 import java.util.Objects;
@@ -34,6 +35,10 @@ public class JacksonUtils {
     public static ObjectMapper mapper = new ObjectMapper();
 
     static {
+        // 注册JDK8的日期API处理模块
+        // @since 1.0.1 Add by brozen
+        mapper.registerModule(new JavaTimeModule());
+
         //在反序列化时忽略在 json 中存在但 Java 对象不存在的属性
         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
