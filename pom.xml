@@ -6,7 +6,7 @@
 
     <groupId>org.limbo</groupId>
     <artifactId>limbo-utils</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <packaging>jar</packaging>
 
     <properties>
@@ -140,9 +140,9 @@
 
     <distributionManagement>
         <repository>
-            <id>bintray-limbo-limbo-utils</id>
-            <name>limbo-limbo-utils</name>
-            <url>https://api.bintray.com/maven/limbo/limbo-utils/limbo-utils/;publish=1</url>
+            <id>github</id>
+            <name>GitHub OWNER Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/limbo-world/limbo-utils</url>
         </repository>
     </distributionManagement>
 </project>
