@@ -31,15 +31,15 @@ public class Lockable<T> {
 
     private final ReentrantReadWriteLock lock;
 
-    private T object;
+    private volatile T locked;
 
     public Lockable() {
         this(null);
     }
 
-    public Lockable(T object) {
+    public Lockable(T locked) {
         this.lock = new ReentrantReadWriteLock();
-        this.object = object;
+        this.locked = locked;
     }
 
     /**
@@ -49,22 +49,16 @@ public class Lockable<T> {
         ReentrantReadWriteLock.WriteLock writeLock = writeLock();
         writeLock.lock();
         try {
-            this.object = object;
+            this.locked = object;
         } finally {
             writeLock.unlock();
         }
     }
     /**
-     * 读取可锁变量的值，申请读锁
+     * 读取可锁变量的值，直接返回，无锁。
      */
     public T get() {
-        ReentrantReadWriteLock.ReadLock readLock = readLock();
-        readLock.lock();
-        try {
-            return object;
-        } finally {
-            readLock.unlock();
-        }
+        return locked;
     }
 
     /**
@@ -109,7 +103,7 @@ public class Lockable<T> {
         ReentrantReadWriteLock.WriteLock writeLock = writeLock();
         writeLock.lock();
         try {
-            operation.accept(object);
+            operation.accept(locked);
         } finally {
             writeLock.unlock();
         }
@@ -122,7 +116,7 @@ public class Lockable<T> {
         ReentrantReadWriteLock.ReadLock readLock = readLock();
         readLock.lock();
         try {
-            operation.accept(object);
+            operation.accept(locked);
         } finally {
             readLock.unlock();
         }
@@ -156,7 +150,7 @@ public class Lockable<T> {
         ReentrantReadWriteLock.WriteLock writeLock = writeLock();
         writeLock.lock();
         try {
-            return operation.apply(object);
+            return operation.apply(locked);
         } finally {
             writeLock.unlock();
         }
@@ -170,14 +164,14 @@ public class Lockable<T> {
         ReentrantReadWriteLock.ReadLock readLock = readLock();
         readLock.lock();
         try {
-            return operation.apply(object);
+            return operation.apply(locked);
         } finally {
             readLock.unlock();
         }
     }
 
     /**
-     * 加锁模式
+     * 加锁模式，支持读锁、写锁
      */
     enum Mode {
         /**

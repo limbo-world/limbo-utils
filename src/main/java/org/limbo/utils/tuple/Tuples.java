@@ -18,7 +18,7 @@ package org.limbo.utils.tuple;
 
 /**
  * @author brozen
- * @date 2020/12/7
+ * @since 2020-12-07
  */
 public class Tuples {
 
@@ -27,6 +27,13 @@ public class Tuples {
      */
     public static <A, B> Tuple2<A, B> of(A a, B b) {
         return new Tuple2<>(a, b);
+    }
+
+    /**
+     * 创建一个三元元组
+     */
+    public static <A, B, C> Tuple3<A, B, C> of(A a, B b, C c) {
+        return new Tuple3<>(a, b, c);
     }
 
     /**

@@ -18,8 +18,6 @@
 
 package org.limbo.utils.tuple;
 
-import lombok.Data;
-
 import java.util.*;
 import java.util.function.Function;
 
@@ -27,8 +25,7 @@ import java.util.function.Function;
  * 包含两个不可变非null元素的元组
  *
  * @author Brozen
- * @date 2019/7/4
- * @email brozen@qq.com
+ * @since 2019-07-04
  */
 public class Tuple2<A, B> implements Tuple {
 
@@ -72,6 +69,14 @@ public class Tuple2<A, B> implements Tuple {
     }
 
     /**
+     * 交换元组中元素的位置，返回新的二元元组。
+     * @return 新的二元元组
+     */
+    public Tuple2<B, A> reverse() {
+        return new Tuple2<>(this.b, this.a);
+    }
+
+    /**
      * 返回元组中元素个数
      * @return 2
      */
@@ -91,6 +96,16 @@ public class Tuple2<A, B> implements Tuple {
             default:
                 throw new IndexOutOfBoundsException(String.format("size: %s, access: %s", size(), index));
         }
+    }
+
+    /**
+     * 添加一个元素到元组，生成新的三元元组
+     * @param c 三元元组的第三个元素
+     * @param <C> 第三个元素类型
+     * @return 新的三元元组
+     */
+    public <C> Tuple3<A, B, C> add(C c) {
+        return new Tuple3<>(this.a, this.b, c);
     }
 
     public List<Object> toList() {
