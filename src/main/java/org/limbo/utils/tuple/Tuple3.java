@@ -32,8 +32,7 @@ import static java.util.Objects.requireNonNull;
  * 包含三个不可变非null元素的元组
  *
  * @author Brozen
- * @date 2019/7/4
- * @email brozen@qq.com
+ * @since 2019-07-04
  */
 @Data
 public class Tuple3<A, B, C> implements Tuple {
@@ -92,6 +91,30 @@ public class Tuple3<A, B, C> implements Tuple {
      */
     public <R> Tuple3<A, B, R> mapC(Function<C, R> fn) {
         return new Tuple3<>(a, b, fn.apply(c));
+    }
+
+    /**
+     * 从三元元组中移除第一个元素，剩下的元素组成二元元组。
+     * @return 新的二元元组
+     */
+    public Tuple2<B, C> removeA() {
+        return new Tuple2<>(this.b, this.c);
+    }
+
+    /**
+     * 从三元元组中移除第二个元素，剩下的元素组成二元元组。
+     * @return 新的二元元组
+     */
+    public Tuple2<A, C> removeB() {
+        return new Tuple2<>(this.a, this.c);
+    }
+
+    /**
+     * 从三元元组中移除第三个元素，剩下的元素组成二元元组。
+     * @return 新的二元元组
+     */
+    public Tuple2<A, B> removeC() {
+        return new Tuple2<>(this.a, this.b);
     }
 
     /**
