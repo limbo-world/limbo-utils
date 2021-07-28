@@ -140,6 +140,32 @@ public final class Verifies {
 
 
     /**
+     * 校验字符串不为null且不为空字符串，并返回入参字符串，否则抛出{@link VerifyException}
+     * @param str 待校验字符串
+     * @see StringUtils#isNotBlank(CharSequence)
+     * @return 入参字符串
+     * @since 1.0.3
+     */
+    public static String requireNotBlank(String str) {
+        return requireNotBlank(str, "Verify Failed! String is blank!");
+    }
+
+
+    /**
+     * 校验字符串不为null且不为空字符串，并返回入参字符串，否则抛出{@link VerifyException}
+     * @param str 待校验字符串
+     * @param message 抛出异常的提示信息
+     * @see StringUtils#isNotBlank(CharSequence)
+     * @return 入参字符串
+     * @since 1.0.3
+     */
+    public static String requireNotBlank(String str, String message) {
+        notBlank(str, message);
+        return str;
+    }
+
+
+    /**
      * 校验字符串引用是null或是空字符串，否则抛出{@link VerifyException}
      * @param str 待校验字符串
      * @see StringUtils#isBlank(CharSequence)
@@ -163,10 +189,12 @@ public final class Verifies {
     /**
      * 校验集合引用是null或集合为空，否则抛出{@link VerifyException}
      * @param collection 待校验集合
-     * @see StringUtils#isBlank(CharSequence)
+     * @param <C> 集合类型
+     * @param <E> 集合中的元素类型
      * @see CollectionUtils#isNotEmpty(Collection)
+     * @since 1.0.3
      */
-    public static void notEmpty(Collection<?> collection) {
+    public static <C extends Collection<E>, E> void notEmpty(C collection) {
         verify(CollectionUtils.isNotEmpty(collection), "Verify Failed! Collection is empty!");
     }
 
@@ -175,10 +203,29 @@ public final class Verifies {
      * 校验集合引用是null或集合为空，否则抛出{@link VerifyException}
      * @param collection 待校验集合
      * @param message 抛出异常的提示信息
+     * @param <C> 集合类型
+     * @param <E> 集合中的元素类型
      * @see CollectionUtils#isNotEmpty(Collection)
+     * @since 1.0.3
      */
-    public static void notEmpty(Collection<?> collection, String message) {
+    public static <C extends Collection<E>, E> void notEmpty(C collection, String message) {
         verify(CollectionUtils.isNotEmpty(collection), message);
+    }
+
+
+    /**
+     * 校验集合引用是null或集合为空，并返回集合，否则抛出{@link VerifyException}
+     * @param collection 待校验集合
+     * @param message 抛出异常的提示信息
+     * @param <C> 集合类型
+     * @param <E> 集合中的元素类型
+     * @return 入参集合
+     * @see CollectionUtils#isNotEmpty(Collection)
+     * @since 1.0.3
+     */
+    public static <C extends Collection<E>, E> C requireNotEmpty(C collection, String message) {
+        notEmpty(collection, message);
+        return collection;
     }
 
 
