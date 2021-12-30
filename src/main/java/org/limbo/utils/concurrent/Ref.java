@@ -15,41 +15,29 @@
  * limitations under the License.
  */
 
-package org.limbo.utils;
+package org.limbo.utils.concurrent;
 
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
-import sun.misc.Unsafe;
 
-import java.lang.reflect.Field;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.concurrent.atomic.AtomicReferenceFieldUpdater;
 
 /**
  * 引用，可以在lambda或匿名类中用来修改变量
  * 线程安全
  *
  * @author Brozen
- * @date 2019/12/4
+ * @since 2019/12/4
  */
 @Slf4j
 @ToString
 public class Ref<T> {
 
-    private static final Unsafe UNSAFE;
-    private static final long VALUE;
-    static {
-        try {
-            Field f = Unsafe.class.getDeclaredField("theUnsafe");
-            f.setAccessible(true);
-            UNSAFE = (Unsafe) f.get(null);
-            VALUE = UNSAFE.objectFieldOffset(Ref.class.getDeclaredField("value"));
-        } catch (Throwable e) {
-            throw new Error(e);
-        }
-    }
+    private static final AtomicReferenceFieldUpdater<Ref, Object> UPDATER = AtomicReferenceFieldUpdater.newUpdater(Ref.class, Object.class, "value");
 
-    private final T value;
+    private final Object value;
 
     public Ref() {
         this(null);
@@ -60,26 +48,26 @@ public class Ref<T> {
     }
 
     public T get() {
-        return this.value;
+        return (T) this.value;
     }
 
     public void set(T value) {
         T copy;
         do {
-            copy = this.value;
-        } while (!UNSAFE.compareAndSwapObject(this, VALUE, copy, value));
+            copy = (T) this.value;
+        } while (!UPDATER.compareAndSet(this, copy, value));
     }
 
     public void setIfAbsent(T value) {
-        UNSAFE.compareAndSwapObject(this, VALUE, null, value);
+        UPDATER.compareAndSet(this, null, value);
     }
 
     public boolean compareAndSet(T oldOne, T newOne) {
-        return UNSAFE.compareAndSwapObject(this, VALUE, oldOne, newOne);
+        return UPDATER.compareAndSet(this, oldOne, newOne);
     }
 
     public Optional<T> optional() {
-        return Optional.ofNullable(this.value);
+        return Optional.ofNullable(((T) this.value));
     }
 
     @Override
