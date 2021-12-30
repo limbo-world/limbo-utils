@@ -26,7 +26,7 @@ import java.util.TreeMap;
 
 /**
  * @author Brozen
- * @date 2019/10/22 11:41 AM
+ * @since 1.0
  */
 @Data
 public class RequestMetaInfo {

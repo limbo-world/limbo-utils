@@ -23,7 +23,7 @@ import lombok.EqualsAndHashCode;
 
 /**
  * @author Brozen
- * @date 2019/12/10 10:42 AM
+ * @since 1.0
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

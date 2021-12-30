@@ -14,7 +14,7 @@
  *   limitations under the License.
  */
 
-package org.limbo.utils;
+package org.limbo.utils.encryption;
 
 import org.apache.commons.lang3.StringUtils;
 

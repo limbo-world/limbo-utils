@@ -30,7 +30,7 @@ import org.limbo.utils.wechat.response.AccessTokenGetResponse;
  * https://developers.weixin.qq.com/miniprogram/dev/api-backend/open-api/access-token/auth.getAccessToken.html
  *
  * @author Brozen
- * @date 2019/12/10 10:40 AM
+ * @since 1.0
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

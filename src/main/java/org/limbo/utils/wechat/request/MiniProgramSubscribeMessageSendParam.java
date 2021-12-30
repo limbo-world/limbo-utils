@@ -24,7 +24,7 @@ import java.util.Map;
  * 小程序模板消息发送参数
  *
  * @author Brozen
- * @date 2019/8/15 3:22 PM
+ * @since 1.0
  *
  * https://developers.weixin.qq.com/miniprogram/dev/api-backend/open-api/subscribe-message/subscribeMessage.send.html
  */

@@ -16,7 +16,7 @@
  *
  */
 
-package org.limbo.utils;
+package org.limbo.utils.strings;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -24,8 +24,7 @@ import java.util.UUID;
 
 /**
  * @author Brozen
- * @date 2020/3/9 8:27 AM
- * @email brozen@qq.com
+ * @since 1.0
  */
 public class UUIDUtils {
 

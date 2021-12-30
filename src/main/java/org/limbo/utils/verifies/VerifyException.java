@@ -18,8 +18,7 @@ package org.limbo.utils.verifies;
 
 /**
  * @author Brozen
- * @date 2020/3/4 12:15 PM
- * @email brozen@qq.com
+ * @since 1.0
  */
 public class VerifyException extends RuntimeException {
 

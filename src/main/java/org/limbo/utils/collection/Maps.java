@@ -28,7 +28,7 @@ import java.util.function.Supplier;
  * Map工具，JDK9 Maps polyfill
  *
  * @author brozen
- * @date 2020/12/7
+ * @since 1.0
  */
 public class Maps {
 

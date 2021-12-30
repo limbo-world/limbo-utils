@@ -20,7 +20,7 @@ import lombok.Getter;
 
 /**
  * @author Brozen
- * @date 2019/8/5 3:25 PM
+ * @since 1.0
  */
 public class WeChatException extends RuntimeException {
 

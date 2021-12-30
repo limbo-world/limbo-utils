@@ -21,7 +21,7 @@ package org.limbo.utils;
  * 可描述对象
  *
  * @author brozen
- * @date 2020/12/10
+ * @since 1.0
  */
 public interface Describable<T> {
 

@@ -18,8 +18,7 @@ package org.limbo.utils.mybatisplus;
 
 /**
  * @author Brozen
- * @date 2020/3/9 11:30 AM
- * @email brozen@qq.com
+ * @since 1.0
  */
 public enum Sorts {
 

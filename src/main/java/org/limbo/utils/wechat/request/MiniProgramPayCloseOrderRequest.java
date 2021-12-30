@@ -31,7 +31,7 @@ import org.limbo.utils.wechat.response.MiniProgramPayCloseOrderResponse;
  * https://pay.weixin.qq.com/wiki/doc/api/jsapi_sl.php?chapter=9_3
  *
  * @author Brozen
- * @date 2019/12/9 9:48 AM
+ * @since 1.0
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

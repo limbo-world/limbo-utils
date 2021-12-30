@@ -20,7 +20,7 @@ import lombok.Data;
 
 /**
  * @author Brozen
- * @date 2019/8/15 5:06 PM
+ * @since 1.0
  */
 @Data
 public class MiniProgramCode2SessionResult {

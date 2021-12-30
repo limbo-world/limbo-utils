@@ -24,8 +24,7 @@ import java.util.function.Function;
 
 /**
  * @author Brozen
- * @date 2020/7/3 4:14 PM
- * @email brozen@qq.com
+ * @since 1.0
  */
 public class Lockable<T> {
 

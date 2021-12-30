@@ -21,7 +21,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.function.Function;
 
@@ -29,7 +28,7 @@ import java.util.function.Function;
  * List批量处理工具
  *
  * @author brozen
- * @date 2020/12/7
+ * @since 1.0
  */
 @Slf4j
 public class ListBatchUtils {

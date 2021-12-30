@@ -18,7 +18,7 @@ package org.limbo.utils.wechat;
 
 /**
  * @author Brozen
- * @date 2019/12/9 2:47 PM
+ * @since 1.0
  */
 public interface Signable {
 

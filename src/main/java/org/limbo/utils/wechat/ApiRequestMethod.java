@@ -18,7 +18,7 @@ package org.limbo.utils.wechat;
 
 /**
  * @author Brozen
- * @date 2019/10/22 11:25 AM
+ * @since 1.0
  */
 public enum ApiRequestMethod {
 

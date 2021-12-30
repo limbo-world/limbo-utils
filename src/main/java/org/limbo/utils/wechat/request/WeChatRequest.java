@@ -22,7 +22,7 @@ import org.limbo.utils.wechat.response.WeChatResponse;
 
 /**
  * @author Brozen
- * @date 2019/10/22 2:17 PM
+ * @since 1.0
  */
 @Data
 public abstract class WeChatRequest<T extends WeChatResponse> {

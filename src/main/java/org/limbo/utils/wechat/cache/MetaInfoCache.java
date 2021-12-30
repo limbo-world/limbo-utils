@@ -28,7 +28,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author Brozen
- * @date 2019/10/22 11:42 AM
+ * @since 1.0
  */
 @Slf4j
 public class MetaInfoCache {

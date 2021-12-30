@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.limbo.utils;
+package org.limbo.utils.reflection;
 
 import com.google.common.collect.Lists;
 import org.apache.commons.beanutils.BeanUtils;
@@ -33,8 +33,7 @@ import java.util.List;
 
 /**
  * @author Brozen
- * @date 2019/7/4 11:09 AM
- * @email brozen@qq.com
+ * @since 1.0
  */
 public class EnhancedBeanUtils {
 

@@ -23,7 +23,7 @@ import java.util.Objects;
  * 可描述枚举
  *
  * @author brozen
- * @date 2020/12/10
+ * @since 1.0
  */
 public interface DescribableEnum<T> extends Describable<T> {
 

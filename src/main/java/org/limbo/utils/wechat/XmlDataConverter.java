@@ -39,7 +39,7 @@ import java.util.TreeMap;
 
 /**
  * @author Brozen
- * @date 2019/10/22 2:34 PM
+ * @since 1.0
  */
 @Slf4j
 public class XmlDataConverter<REQ extends WeChatRequest<RES>, RES extends WeChatResponse> implements DataConverter<REQ, RES> {

@@ -24,8 +24,7 @@ import java.io.Serializable;
 
 /**
  * @author Brozen
- * @date 2020/3/5
- * @email brozen@qq.com
+ * @since 1.0
  */
 @Data
 @NoArgsConstructor

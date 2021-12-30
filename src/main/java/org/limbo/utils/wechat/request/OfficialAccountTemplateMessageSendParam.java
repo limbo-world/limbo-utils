@@ -24,7 +24,7 @@ import java.util.Map;
 
 /**
  * @author Brozen
- * @date 2019/8/15 2:05 PM
+ * @since 1.0
  */
 @Data
 public class OfficialAccountTemplateMessageSendParam {

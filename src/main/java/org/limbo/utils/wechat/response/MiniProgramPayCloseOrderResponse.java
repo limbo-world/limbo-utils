@@ -23,7 +23,7 @@ import lombok.ToString;
 
 /**
  * @author Brozen
- * @date 2019/12/9 2:40 PM
+ * @since 1.0
  */
 @Data
 @ToString(callSuper = true)

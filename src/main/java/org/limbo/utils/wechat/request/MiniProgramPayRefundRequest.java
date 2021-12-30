@@ -46,7 +46,7 @@ import lombok.EqualsAndHashCode;
  * https://pay.weixin.qq.com/wiki/doc/api/jsapi_sl.php?chapter=9_4
  *
  * @author Brozen
- * @date 2019/12/9 3:02 PM
+ * @since 1.0
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

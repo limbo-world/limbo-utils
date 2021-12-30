@@ -22,7 +22,7 @@ import lombok.EqualsAndHashCode;
 
 /**
  * @author Brozen
- * @date 2019/10/22 4:15 PM
+ * @since 1.0
  *
  * https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_7&index=8
  */

@@ -22,7 +22,7 @@ import org.limbo.utils.wechat.response.WeChatResponse;
 
 /**
  * @author Brozen
- * @date 2019/10/23 11:31 AM
+ * @since 1.0
  */
 public class JsonDataConverter<REQ extends WeChatRequest<RES>, RES extends WeChatResponse> implements DataConverter<REQ, RES> {
 

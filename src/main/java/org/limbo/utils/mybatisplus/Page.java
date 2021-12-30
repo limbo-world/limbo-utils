@@ -26,8 +26,7 @@ import java.util.List;
 
 /**
  * @author Brozen
- * @date 2020/3/6 8:35 AM
- * @email brozen@qq.com
+ * @since 1.0
  */
 @Data
 public class Page<T> {

@@ -22,7 +22,7 @@ import java.lang.annotation.*;
  * 微信API
  *
  * @author Brozen
- * @date 2019/10/22 11:24 AM
+ * @since 1.0
  */
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)

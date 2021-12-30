@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package org.limbo.utils;
+package org.limbo.utils.strings;
 
 /**
  * 中文字符串和unicode互转工具类 <br>

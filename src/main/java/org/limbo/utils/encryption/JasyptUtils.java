@@ -14,7 +14,7 @@
  *   limitations under the License.
  */
 
-package org.limbo.utils;
+package org.limbo.utils.encryption;
 
 import org.jasypt.encryption.pbe.PooledPBEStringEncryptor;
 import org.jasypt.encryption.pbe.StandardPBEByteEncryptor;
@@ -22,7 +22,7 @@ import org.jasypt.encryption.pbe.config.SimpleStringPBEConfig;
 
 /**
  * @author Devil
- * @date 2020/11/18 3:31 PM
+ * @since 1.0
  */
 public class JasyptUtils {
 

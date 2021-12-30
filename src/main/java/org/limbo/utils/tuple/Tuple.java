@@ -21,7 +21,7 @@ import java.util.List;
 
 /**
  * @author brozen
- * @date 2020/12/7
+ * @since 1.0
  */
 public interface Tuple extends Iterable<Object>, Serializable {
 

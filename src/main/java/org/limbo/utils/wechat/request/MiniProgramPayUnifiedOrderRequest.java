@@ -36,7 +36,7 @@ import java.util.Date;
  * https://pay.weixin.qq.com/wiki/doc/api/jsapi_sl.php?chapter=9_1
  *
  * @author Brozen
- * @date 2019/10/22 11:13 AM
+ * @since 1.0
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

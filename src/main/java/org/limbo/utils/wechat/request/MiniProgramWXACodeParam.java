@@ -22,7 +22,7 @@ import lombok.Data;
  * https://developers.weixin.qq.com/miniprogram/dev/api-backend/open-api/qr-code/wxacode.getUnlimited.html
  *
  * @author Brozen
- * @date 2019/8/15 4:54 PM
+ * @since 1.0
  */
 @Data
 public class MiniProgramWXACodeParam {
