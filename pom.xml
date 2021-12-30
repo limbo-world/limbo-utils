@@ -55,12 +55,12 @@
             <version>1.7.25</version>
         </dependency>
 
-        <!-- Spring依赖，微信小程序API依赖ConversionService，考虑移除，使用自定义的 -->
+        <!-- Spring -->
         <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
+            <artifactId>spring-context</artifactId>
             <version>${spring.version}</version>
-            <scope>provided</scope>
+<!--            <scope>provided</scope>-->
         </dependency>
 
         <!-- Jackson -->
