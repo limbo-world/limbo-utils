@@ -23,6 +23,8 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 
 /**
+ * WEB 通用响应封装
+ *
  * @author Brozen
  * @since 1.0
  */
@@ -32,10 +34,19 @@ public class Response<T> implements Serializable {
 
     private static final long serialVersionUID = -7844608116500392515L;
 
+    /**
+     * 响应状态码
+     */
     private int code;
 
+    /**
+     * 响应信息
+     */
     private String msg;
 
+    /**
+     * 响应数据
+     */
     private T data;
 
     public Response(T data) {
@@ -67,45 +78,4 @@ public class Response<T> implements Serializable {
         return this.code == HttpStatus.SC_OK;
     }
 
-    /**
-     * 调用正常
-     */
-    public static <T> Response<T> ok() {
-        return new Response<>(null);
-    }
-
-    /**
-     * 调用正常
-     */
-    public static <T> Response<T> ok(T data) {
-        return new Response<>(data);
-    }
-
-    /**
-     * 参数错误
-     */
-    public static <T> Response<T> badRequest(String msg) {
-        return new Response<>(HttpStatus.SC_BAD_REQUEST, msg);
-    }
-
-    /**
-     * 未认证，未登录
-     */
-    public static <T> Response<T> unauthorized(String msg) {
-        return new Response<>(HttpStatus.SC_UNAUTHORIZED, msg);
-    }
-
-    /**
-     * 未授权，无权限
-     */
-    public static <T> Response<T> forbidden(String msg) {
-        return new Response<>(HttpStatus.SC_FORBIDDEN, msg);
-    }
-
-    /**
-     * 服务器内部错误
-     */
-    public static <T> Response<T> serviceError(String msg) {
-        return new Response<>(HttpStatus.SC_INTERNAL_SERVER_ERROR, msg);
-    }
 }
