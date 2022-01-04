@@ -6,7 +6,7 @@
 
     <groupId>io.github.limbo-world</groupId>
     <artifactId>utils</artifactId>
-    <version>1.0.3-SNAPSHOT</version>
+    <version>1.0.3</version>
     <packaging>jar</packaging>
 
     <properties>
@@ -15,6 +15,7 @@
         <jasypt.version>1.16</jasypt.version>
         <mybatis.plus.verison>3.3.1</mybatis.plus.verison>
         <jdom.version>1.1</jdom.version>
+        <junit.version>4.13.2</junit.version>
     </properties>
 
     <dependencies>
@@ -99,6 +100,13 @@
             <artifactId>jdom</artifactId>
             <version>${jdom.version}</version>
             <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
