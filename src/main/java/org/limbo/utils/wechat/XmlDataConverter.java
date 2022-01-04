@@ -114,6 +114,8 @@ public class XmlDataConverter<REQ extends WeChatRequest<RES>, RES extends WeChat
             }
 
             SAXBuilder builder = new SAXBuilder();
+            // FIX CVE-2021-33813 https://github.com/advisories/GHSA-2363-cqg2-863c
+            builder.setExpandEntities(false);
             Document doc = builder.build(in);
             Element root = doc.getRootElement();
             List children = root.getChildren();
