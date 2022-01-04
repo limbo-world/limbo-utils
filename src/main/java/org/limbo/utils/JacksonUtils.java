@@ -32,9 +32,14 @@ import java.util.Objects;
  */
 public class JacksonUtils {
 
-    public static ObjectMapper mapper = new ObjectMapper();
+    public static ObjectMapper mapper = newObjectMapper();
 
-    static {
+    /**
+     * 生成新的{@link ObjectMapper}
+     */
+    public static ObjectMapper newObjectMapper() {
+        ObjectMapper mapper = new ObjectMapper();
+
         // 注册JDK8的日期API处理模块
         // @since 1.0.1 Add by brozen
         mapper.registerModule(new JavaTimeModule());
@@ -48,8 +53,14 @@ public class JacksonUtils {
 
         //在序列化时忽略值为 null 的属性
         mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+
+        return mapper;
     }
 
+
+    /**
+     * 将对象转换为JSON字符串
+     */
     public static <T> String toJSONString(T t) {
         Objects.requireNonNull(t);
         try {
@@ -60,6 +71,9 @@ public class JacksonUtils {
     }
 
 
+    /**
+     * 解析JSON字符串为指定类型
+     */
     public static <T> T parseObject(String json, Class<T> type) {
         Objects.requireNonNull(json);
         Objects.requireNonNull(type);
@@ -70,6 +84,10 @@ public class JacksonUtils {
         }
     }
 
+
+    /**
+     * 解析JSON字符串为指定类型，可以指定泛型以及多重嵌套泛型。
+     */
     public static <T> T parseObject(String json, TypeReference<T> type) {
         Objects.requireNonNull(json);
         Objects.requireNonNull(type);
@@ -79,5 +97,6 @@ public class JacksonUtils {
             throw new IllegalStateException("Jackson反序列化失败！type=" + type.getType().getTypeName(), e);
         }
     }
+
 
 }
