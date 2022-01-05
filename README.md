@@ -10,7 +10,12 @@
 
 ## 函数式接口 org.limbo.utils.functional
 
-## JDK8时间API org.limbo.utils.instant
+## JDK8时间API org.limbo.utils.time
+### org.limbo.utils.time.Formatters
+### org.limbo.utils.time.DateUtils
+### org.limbo.utils.time.TimeUtils
+### org.limbo.utils.time.DateTimeUtils
+### org.limbo.utils.time.InstantUtils
 
 ## 字符串、字符集编码 org.limbo.utils.strings
 

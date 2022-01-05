@@ -6,7 +6,8 @@ import org.junit.Test;
 import java.time.Instant;
 import java.time.ZoneOffset;
 
-import static org.limbo.utils.instant.InstantUtils.*;
+import static org.limbo.utils.time.InstantUtils.*;
+import static org.limbo.utils.time.Formatters.*;
 
 /**
  * @author Brozen
@@ -25,7 +26,7 @@ public class InstantUtilsTest {
 
     @Test
     public void testDefaultZoneAndOffset() {
-//        System.setProperty("limbo.instant.zone-offset", "+9");
+//        System.setProperty("limbo.time.zone-offset", "+9");
         System.out.println(formatYMDHMS(Instant.now()));
         System.out.println(formatYMDHMS(beginningOfToday()));
         System.out.println(formatYMDHMS(endingOfToday()));
