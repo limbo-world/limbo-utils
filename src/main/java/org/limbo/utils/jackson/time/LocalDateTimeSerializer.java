@@ -30,4 +30,9 @@ public class LocalDateTimeSerializer extends JsonSerializer<LocalDateTime> {
         jsonGenerator.writeString(DateTimeUtils.format(localDateTime, pattern));
     }
 
+
+    @Override
+    public Class<LocalDateTime> handledType() {
+        return LocalDateTime.class;
+    }
 }
