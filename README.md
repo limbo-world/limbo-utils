@@ -27,7 +27,8 @@
 
 ## HTTP和WEB相关 org.limbo.utils.web
 
-## Jackson org.limbo.utils.JacksonUtils
+## Jackson org.limbo.utils.jackson
+### org.limbo.utils.jackson.JacksonUtils
 
 ## MyBatisPlus org.limbo.utils.mybatisplus
 

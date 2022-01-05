@@ -16,7 +16,7 @@
 
 package org.limbo.utils.wechat;
 
-import org.limbo.utils.JacksonUtils;
+import org.limbo.utils.jackson.JacksonUtils;
 import org.limbo.utils.wechat.request.WeChatRequest;
 import org.limbo.utils.wechat.response.WeChatResponse;
 

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.limbo.utils;
+package org.limbo.utils.jackson;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -22,8 +22,12 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import org.limbo.utils.jackson.time.LocalDateTimeDeserializer;
+import org.limbo.utils.jackson.time.LocalDateTimeSerializer;
+import org.limbo.utils.time.Formatters;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 /**
@@ -42,7 +46,12 @@ public class JacksonUtils {
 
         // 注册JDK8的日期API处理模块
         // @since 1.0.1 Add by brozen
-        mapper.registerModule(new JavaTimeModule());
+        JavaTimeModule javaTimeModule = new JavaTimeModule();
+        // 注册LocalDateTime的类型处理，可以通过limbo.jackson.date-time-pattern环境变量指定
+        String dateTimePattern = System.getProperty("limbo.jackson.date-time-pattern", Formatters.YMD_HMS);
+        javaTimeModule.addSerializer(new LocalDateTimeSerializer(dateTimePattern));
+        javaTimeModule.addDeserializer(LocalDateTime.class, new LocalDateTimeDeserializer(dateTimePattern));
+        mapper.registerModule(javaTimeModule);
 
         //在反序列化时忽略在 json 中存在但 Java 对象不存在的属性
         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);

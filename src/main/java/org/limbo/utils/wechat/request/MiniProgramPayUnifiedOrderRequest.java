@@ -16,7 +16,7 @@
 
 package org.limbo.utils.wechat.request;
 
-import org.limbo.utils.JacksonUtils;
+import org.limbo.utils.jackson.JacksonUtils;
 import org.limbo.utils.collection.Maps;
 import org.limbo.utils.wechat.ApiDataFormat;
 import org.limbo.utils.wechat.ApiRequestMethod;
