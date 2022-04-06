@@ -16,6 +16,7 @@
 
 package org.limbo.utils.tuple;
 
+import java.util.Map;
 import java.util.Objects;
 import java.util.function.Function;
 
@@ -23,9 +24,9 @@ import java.util.function.Function;
  * 键值对
  *
  * @author Brozen
- * @since 2021-09-01
+ * @since 1.0.4 继承{@link Map.Entry}
  */
-public class Entry<K, V> {
+public class Entry<K, V> implements Map.Entry<K, V> {
 
     /**
      * key
@@ -35,12 +36,12 @@ public class Entry<K, V> {
     /**
      * value
      */
-    private final V value;
+    private V value;
 
 
     public Entry(K key, V value) {
-        this.key = key;
-        this.value = value;
+        this.key = Objects.requireNonNull(key);
+        this.value = Objects.requireNonNull(value);
     }
 
 
@@ -57,6 +58,19 @@ public class Entry<K, V> {
      */
     public V getValue() {
         return value;
+    }
+
+
+    /**
+     * {@inheritDoc}
+     * @param value
+     * @return
+     */
+    @Override
+    public V setValue(V value) {
+        V oldValue = this.value;
+        this.value = Objects.requireNonNull(value);
+        return oldValue;
     }
 
 
