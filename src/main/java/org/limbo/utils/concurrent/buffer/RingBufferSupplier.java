@@ -5,6 +5,7 @@ import com.lmax.disruptor.Sequence;
 import com.lmax.disruptor.SequenceBarrier;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
+import org.limbo.utils.concurrent.Ref;
 
 import java.util.Collection;
 import java.util.concurrent.Semaphore;
@@ -27,7 +28,7 @@ public abstract class RingBufferSupplier<T> extends AsyncLoadBufferedSupplier<T>
     /**
      * 缓存队列
      */
-    private final RingBuffer<Cacheable<T>> buffer;
+    private final RingBuffer<Ref<T>> buffer;
 
     /**
      * 读索引
@@ -41,11 +42,11 @@ public abstract class RingBufferSupplier<T> extends AsyncLoadBufferedSupplier<T>
 
 
     public RingBufferSupplier(int bufferSize, boolean eagerLoad) {
-        this(RingBuffer.createSingleProducer(Cacheable::new, bufferSize), eagerLoad);
+        this(RingBuffer.createSingleProducer(Ref::new, bufferSize), eagerLoad);
     }
 
 
-    public RingBufferSupplier(RingBuffer<Cacheable<T>> buffer, boolean eagerLoad) {
+    public RingBufferSupplier(RingBuffer<Ref<T>> buffer, boolean eagerLoad) {
         super(buffer.getBufferSize(), eagerLoad);
         this.accessorController = new Semaphore(buffer.getBufferSize() - 1);
         this.buffer = buffer;
@@ -113,10 +114,10 @@ public abstract class RingBufferSupplier<T> extends AsyncLoadBufferedSupplier<T>
 
                 // 如果有数据可读，则读取；否则重新获取可读索引；
                 if (nextSequence <= availableSequence) {
-                    Cacheable<T> cacheable = buffer.get(nextSequence);
+                    Ref<T> ref = buffer.get(nextSequence);
                     // 读数据，并清空value，因为Disruptor不会自动清理，需要手动处理
-                    value = cacheable.value();
-                    cacheable.value(null);
+                    value = ref.get();
+                    ref.set(null);
                     return value;
                 } else {
                     // 走到这里，说明第一次进入循环；或多线程并发读时，缓存中数据不足，不够读取；
@@ -171,8 +172,8 @@ public abstract class RingBufferSupplier<T> extends AsyncLoadBufferedSupplier<T>
         for (T datum : data) {
             long sequence = this.buffer.next();
             try {
-                Cacheable<T> cacheable = this.buffer.get(sequence);
-                cacheable.value(datum);
+                Ref<T> cacheable = this.buffer.get(sequence);
+                cacheable.set(datum);
             } finally {
                 this.buffer.publish(sequence);
             }

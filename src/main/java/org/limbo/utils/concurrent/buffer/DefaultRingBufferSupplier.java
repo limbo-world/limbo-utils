@@ -1,6 +1,7 @@
 package org.limbo.utils.concurrent.buffer;
 
 import com.lmax.disruptor.RingBuffer;
+import org.limbo.utils.concurrent.Ref;
 
 import java.util.Collection;
 import java.util.Objects;
@@ -32,7 +33,7 @@ public class DefaultRingBufferSupplier<C extends Collection<T>, T> extends RingB
      * @param eagerLoad 是否在启动生产者后立即进行数据加载。如传入false，则在第一次调用{@link #get()}方法时才会触发数据加载。
      * @param supplier 真正进行数据生产的生产者，将批量生产数据，并以集合形式返回。
      */
-    public DefaultRingBufferSupplier(RingBuffer<Cacheable<T>> buffer, boolean eagerLoad, Supplier<C> supplier) {
+    public DefaultRingBufferSupplier(RingBuffer<Ref<T>> buffer, boolean eagerLoad, Supplier<C> supplier) {
         super(buffer, eagerLoad);
         this.collectionSupplier = Objects.requireNonNull(supplier);
     }

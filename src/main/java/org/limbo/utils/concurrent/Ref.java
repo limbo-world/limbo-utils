@@ -38,7 +38,8 @@ public class Ref<T> {
     /**
      * 原子更新引用的对象
      */
-    private static final AtomicReferenceFieldUpdater<Ref, Object> UPDATER = AtomicReferenceFieldUpdater.newUpdater(Ref.class, Object.class, "value");
+    private static final AtomicReferenceFieldUpdater<Ref, Object> UPDATER
+            = AtomicReferenceFieldUpdater.newUpdater(Ref.class, Object.class, "value");
 
     /**
      * 引用的对象

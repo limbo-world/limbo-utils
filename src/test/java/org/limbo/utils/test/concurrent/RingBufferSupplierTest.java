@@ -38,7 +38,7 @@ public class RingBufferSupplierTest {
         for (int i = 0; i < 10; i++) {
             Thread thread = new Thread(() -> {
                 for (int j = 0; j < 100; j++) {
-                    System.out.println("生成会议号: " + idSupplier.get());
+                    System.out.println("生成ID: " + idSupplier.get());
                 }
             });
             threads.add(thread);
