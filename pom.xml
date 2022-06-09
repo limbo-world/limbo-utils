@@ -10,10 +10,8 @@
     <packaging>jar</packaging>
 
     <properties>
-        <spring.version>5.1.5.RELEASE</spring.version>
         <jackson.version>2.12.6.1</jackson.version>
-        <jasypt.version>1.16</jasypt.version>
-        <mybatis.plus.verison>3.3.1</mybatis.plus.verison>
+        <jasypt.version>1.9.3</jasypt.version>
         <jdom.version>1.1</jdom.version>
         <disruptor.version>3.4.4</disruptor.version>
         <junit.version>4.13.2</junit.version>
@@ -57,14 +55,6 @@
             <version>1.7.25</version>
         </dependency>
 
-        <!-- Spring -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>${spring.version}</version>
-<!--            <scope>provided</scope>-->
-        </dependency>
-
         <!-- Jackson -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -75,23 +65,15 @@
         <dependency>
             <groupId>com.fasterxml.jackson.datatype</groupId>
             <artifactId>jackson-datatype-jsr310</artifactId>
-            <version>${jackson.version}</version>
+            <version>2.13.3</version>
             <scope>provided</scope>
         </dependency>
 
         <!-- 配置加密 -->
         <dependency>
-            <groupId>com.github.ulisesbocchio</groupId>
-            <artifactId>jasypt-spring-boot-starter</artifactId>
-            <version>${jasypt.version}</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <!-- MyBatis -->
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus</artifactId>
-            <version>${mybatis.plus.verison}</version>
+            <groupId>org.jasypt</groupId>
+            <artifactId>jasypt</artifactId>
+            <version>1.9.3</version>
             <scope>provided</scope>
         </dependency>
 
